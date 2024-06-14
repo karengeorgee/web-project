@@ -22,7 +22,29 @@ background-attachment: fixed;
 </style>
 </head>
 <body>
-<div class="container">
+  <main>
+    <section id="signup-section" class="container">
+        <h2>Sign Up</h2>
+        <form id="signupForm"  action="/auth/signup" method="post">
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" id="username" name="username" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" id="password" name="password" class="form-control" required>
+                <span id="showPassword"><i class="bi bi-eye"></i></span>
+            </div>
+            <div class="mb-3">
+                <label for="confirmPassword" class="form-label">Confirm Password</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" required>
+                <span id="showConfirmPassword"><i class="bi bi-eye"></i></span>
+            </div>
+            <div id="errorDiv"></div>
+            <button type="submit" class="btn btn-primary">Sign Up</button>
+            <button id="done-button" type="button" class="btn btn-secondary">Done</button>
+        </form>
+<!--<div class="container">
   
     <h1>Signup</h1>
   <input  id="un" value placeholder=" Name..." type="text" class="textfield" name="guest_name" >
@@ -32,11 +54,11 @@ background-attachment: fixed;
     <option value="User">User</option>
     </select>
   </div> -->
-  <input id="pas" value placeholder="Password..." type="number" class="textfield" name="Password"><br><br>
+  <!--<input id="pas" value placeholder="Password..." type="number" class="textfield" name="Password"><br><br>
     <input  class ="Submitbut" type="submit" onclick='validate()' value="sign up">
     <br>
     <p class="logtext">Already have an account? <a href="/login">Login</a></p>
-  </div>
+  </div> -->
   
   
   <div class="white-background"></div>
@@ -51,7 +73,7 @@ background-attachment: fixed;
       <a href="mapmenu">Menu</a>
       <a href="#about-us-section">About Us</a>
       <a href="#contact-us-section">Contact Us</a>
-      <a href="sign">Sign up</a>
+      <a href="signup">Sign up</a>
       <a href="login">Login</a>
   </div>
 

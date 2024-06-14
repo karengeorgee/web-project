@@ -1,17 +1,9 @@
-document.getElementById("showPassword").addEventListener("click", function () {
-  togglePasswordVisibility("password", "showPassword");
-});
-
-document
-  .getElementById("showConfirmPassword")
-  .addEventListener("click", function () {
-    togglePasswordVisibility("confirmPassword", "showConfirmPassword");
-  });
-
 document
   .getElementById("signupForm")
   .addEventListener("submit", function (event) {
     event.preventDefault(); // Prevent default form submission
+
+    console.log("Form submission prevented");
 
     var username = document.getElementById("username").value;
     var password = document.getElementById("password").value;
@@ -21,46 +13,40 @@ document
     errorDiv.innerHTML = ""; // Clear previous errors
     errorDiv.style.display = "none"; // Hide errorDiv initially
 
+    console.log("Username:", username);
+    console.log("Password:", password);
+    console.log("Confirm Password:", confirmPassword);
+
     if (!username || !password || !confirmPassword) {
       displayError("Please enter both username and password.");
+      console.log("Error: Missing username or password");
       return;
     }
 
     if (password !== confirmPassword) {
       displayError("Passwords do not match.");
+      console.log("Error: Passwords do not match");
       return;
     }
 
     if (password.length < 8) {
       displayError("Password must be at least 8 characters long.");
+      console.log("Error: Password too short");
       return;
     }
 
-    // Additional validation logic can be added here
-
-    // If validation passes, submit the form
+    console.log("Form submitted successfully");
     this.submit();
   });
 
-function displayError(Message) {
+function displayError(message) {
   var errorMessage = document.createElement("div");
   errorMessage.classList.add("alert", "alert-danger");
-  errorMessage.textContent = Message;
+  errorMessage.textContent = message;
   errorDiv.appendChild(errorMessage);
+
+  console.log("Displaying error:", message);
 
   errorDiv.style.display = "block"; // Make errorDiv visible
   return;
-}
-
-function togglePasswordVisibility(fieldId, eyeIconId) {
-  var passwordField = document.getElementById(fieldId);
-  var eyeIcon = document.getElementById(eyeIconId);
-
-  if (passwordField.type === "password") {
-    passwordField.type = "text";
-    eyeIcon.innerHTML = '<i class="bi bi-eye-slash"></i>';
-  } else {
-    passwordField.type = "password";
-    eyeIcon.innerHTML = '<i class="bi bi-eye"></i>';
-  }
 }

@@ -5,7 +5,7 @@ const indexRoutes = require("./indexRoutes");
 
 function setupRoutes(app) {
   // Initialize your routes here...
-  app.use("/", indexRoutes);
+  app.use("/SJAK", indexRoutes);
   app.use("/auth", authRoutes);
   app.use("/user", userRoutes);
   // Catch-all route for handling 404 errors
@@ -16,5 +16,6 @@ function setupRoutes(app) {
     });
   });
 }
+
 
 module.exports = { setupRoutes };

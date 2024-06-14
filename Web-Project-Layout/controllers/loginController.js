@@ -32,7 +32,7 @@ const loginProcess = async (req, res) => {
     // Store user data in the session
     req.session.user = user;
 
-    res.render("index", {
+    res.render("SJAK", {
       currentPage: "home",
       user: req.session.user === undefined ? "" : req.session.user,
     });
