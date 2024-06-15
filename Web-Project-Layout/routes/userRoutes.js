@@ -6,9 +6,9 @@ app.use((req, res, next) => {
   if (req.session.user !== undefined) {
     next();
   } else {
-    res.render("404", {
+    res.render("SJAK", {
       user: req.session.user === undefined ? "" : req.session.user,
-      currentPage: "404",
+      currentPage: "SJAK",
     });
   }
 });

@@ -50,3 +50,9 @@ function displayError(message) {
   errorDiv.style.display = "block"; // Make errorDiv visible
   return;
 }
+
+
+function toggleMenu() {
+  var menuItems = document.getElementById("menuItems");
+  menuItems.classList.toggle("show");
+}

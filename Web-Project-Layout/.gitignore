@@ -1,2 +1,13 @@
 node_modules
 .env
+
+git add . 
+git commit -m "....."
+git push origin tamor
+
+//DAh lel push 
+git checkout tamor
+git pull origin tamor
+/// dah lel pull
+
+node app.js

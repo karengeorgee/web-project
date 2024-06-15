@@ -1,9 +1,9 @@
 const express = require("express");
 const app = express();
 
-app.get("/", (req, res) => {
-  res.render("index", {
-    currentPage: "home",
+app.get("/SJAK", (req, res) => {
+  res.render("SJAk", {
+    currentPage: "SJAK",
     user: req.session.user === undefined ? "" : req.session.user,
   });
 });
