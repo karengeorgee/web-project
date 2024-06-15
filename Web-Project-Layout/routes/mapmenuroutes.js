@@ -22,8 +22,11 @@ router.post("/checkGuess/:countryName", (req, res) => {
 });
 
 router.get("/skipGuess/:menu", (req, res) => {
-  const menu = req.params.menu;
-  mapmenuController.skipGuess(req, res, menu);
-});
+    const menu = req.params.menu;
+    mapmenuController.skipGuess(req, res, menu, () => {
+      // After the skipGuess logic, navigate to the menu page.
+      res.redirect('/menu');
+    });
+  });
 
 module.exports = router;
