@@ -1,29 +1,36 @@
-// app.js
-const express = require('express');
-const mongoose = require('mongoose');
-const reservationRoutes = require('./routes/ReservationRoutes');
+const express = require("express");
+const bodyParser = require("body-parser");
+const session = require("express-session");
+require("dotenv").config();
+const { connectToMongoDB } = require("./config/mongo.js");
+const { setupRoutes } = require("./routes/routes.js");
 
 const app = express();
-const port = process.env.PORT || 3000;
 
-// Middleware
-app.use(express.json()); // for parsing application/json
+// Serve static files
+app.use(express.static("public", { maxAge: "7d" }));
 
-// Database connection
-mongoose.connect('mongodb://localhost:27017/mydatabase', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-});
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-db.once('open', function() {
-  console.log('Connected to MongoDB');
-});
+// Body parser middleware
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
-// Routes
-app.use('/api', reservationRoutes); // Example: routes are accessible via /api/reservation
+// Set view engine
+app.set("view engine", "ejs");
 
-// Start server
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
-});
+// Connect to MongoDB
+connectToMongoDB();
+
+// Express session middleware
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: true,
+    saveUninitialized: true,
+  })
+);
+
+// Setup routes
+setupRoutes(app);
+
+const PORT = process.env.PORT;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

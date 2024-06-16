@@ -2,7 +2,7 @@
 const authRoutes = require("./authRoutes");
 const userRoutes = require("./userRoutes");
 const indexRoutes = require("./indexRoutes");
-const Reservationroutes=require("./Reservationroutes");
+const Reservationroutes=require("./ReservationRoutes");
 const sjakRoutes = require("./SJAKroutes"); // Import the SJAK route file
 const mapMenuRoutes = require("./mapmenuroutes"); // Import the map menu route file
 const menuRoutes = require('./menuroute'); // Import menu route file
