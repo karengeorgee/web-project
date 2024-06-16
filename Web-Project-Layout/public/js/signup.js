@@ -50,8 +50,11 @@ function displayError(message) {
   errorDiv.style.display = "block"; // Make errorDiv visible
   return;
 }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> f4dbfc03e4eab10116dff8cdafa9b4c60e34cc6f
 function toggleMenu() {
   var menuItems = document.getElementById("menuItems");
   menuItems.classList.toggle("show");

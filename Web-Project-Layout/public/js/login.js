@@ -40,4 +40,8 @@ document
   function toggleMenu() {
     var menuItems = document.getElementById("menuItems");
     menuItems.classList.toggle("show");
+<<<<<<< HEAD
   }
+=======
+  }
+>>>>>>> f4dbfc03e4eab10116dff8cdafa9b4c60e34cc6f
