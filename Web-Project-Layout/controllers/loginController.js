@@ -1,4 +1,3 @@
-// loginController.js
 const User = require("../models/userModel.js"); // Assuming you have a User model defined
 const bcrypt = require("bcrypt");
 

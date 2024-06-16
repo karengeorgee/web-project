@@ -1,5 +1,3 @@
-// login.js
-
 document.getElementById("showPassword").addEventListener("click", function () {
   var passwordField = document.getElementById("password");
   if (passwordField.type === "password") {
@@ -39,3 +37,7 @@ document
     // If validation passes, submit the form
     this.submit();
   });
+  function toggleMenu() {
+    var menuItems = document.getElementById("menuItems");
+    menuItems.classList.toggle("show");
+  }

@@ -1,35 +1,32 @@
-const mongoose = require("mongoose");
-const reservationSchema = new mongoose.Schema({
+const express = require('express');
+const mongoose = require('mongoose');
+3
+const app = express();
+app.use(express.json());
+
+mongoose.connect('mongodb+srv://karen:karen@cluster0.3swllaq.mongodb.net', { useNewUrlParser: true, useUnifiedTopology: true });
+
+const Reservation = mongoose.model('Reservation', {
   firstName: String,
   lastName: String,
   email: String,
-  preferredSeating: String,
-  numberOfSeats: Number
-});
-const Reservation = mongoose.model('Reservation', reservationSchema);
-
-//Serve the HTML file
-app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/index.html');
+  seating: String,
+  numSeats: Number
 });
 
-//Handle form submission
-app.post('/submit-form', (req, res) => {
-  const newReservation = new Reservation({
-    firstName: req.body.guest_name,
-    lastName: req.body.guest_surname,
-    email: req.body.email,
-    preferredSeating: req.body.table,
-    numberOfSeats: req.body['No-seats']
-  });
+app.post('/api/reservations', async (req, res) => {
+  try {
+    const reservation = new Reservation(req.body);
+    const result = await reservation.save();
+    res.json(result);
+  } catch (error) {
+    console.error('Error creating reservation:', error);
+    res.status(500).json({ message: 'Error creating reservation' });
+  }
+});
 
-  newReservation.save((err) => {
-    if (err) {
-      res.send('Error saving reservation.');
-    } else {
-      res.send('Reservation saved successfully!');
-    }
-  });
+app.listen(3000, () => {
+  console.log('Server listening on port 3000');
 });
 
 
