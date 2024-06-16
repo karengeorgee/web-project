@@ -9,6 +9,7 @@ const menuRoutes = require('./menuroute'); // Import menu route file
 
 
 
+
 function setupRoutes(app) {
   // Initialize your routes here...
  // app.use("/SJAK", indexRoutes);
@@ -18,6 +19,7 @@ function setupRoutes(app) {
   app.use("/Reservation",Reservationroutes);
   app.use("/mapmenu", mapMenuRoutes); // Add the map menu routes
   app.use("/menu", menuRoutes); // Setup menu route
+
 
   // Catch-all route for handling 404 errors
   app.use((req, res, next) => {

@@ -10,7 +10,6 @@ app.get("/login", (req, res) => {
     user: req.session.user === undefined ? "" : req.session.user,
   });
 });
-
 app.get("/signup", (req, res) => {
   res.render("signup", {
     currentPage: "signup",
