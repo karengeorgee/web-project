@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Manage Items</title>
+</head>
+<body>
+    <h1>Manage Items</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Item Name</th>
+                <th>Cuisine</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% items.forEach(item => { %>
+                <tr>
+                    <td><%= item.itemName %></td>
+                    <td><%= item.cuisine %></td>
+                    <td><%= item.price %></td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</body>
+</html>
