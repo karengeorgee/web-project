@@ -64,7 +64,6 @@
     <img src="/images/Untitled-1.png" alt="Logo" style="width: 100%;">
   </div>
   <div id="word-container">
-    <!-- <p><img src="/images/menu_3073727.png" alt="Menu Icon"> Menu</p> -->
     <h1></h1>
     <div class="white-background"></div>
     <div class="menu-toggle" onclick="toggleMenu()">
@@ -109,27 +108,28 @@
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script src="/js/mapmenu.js"></script>
   <script>
-    function checkGuess() {
-      var userGuess = document.getElementById('guessInput').value.toLowerCase();
-      var correctAnswer = 'turkey'; // The correct answer for this example
+    function showAnimationAndRedirect(animationId, redirectUrl) {
+      var animationContainer = document.getElementById(animationId);
+      animationContainer.classList.add('show');
 
-      if (userGuess === correctAnswer) {
-        showHappyAnimation();
+      setTimeout(function() {
+        animationContainer.classList.remove('show');
+        window.location.href = redirectUrl; // Redirect to another page
+      }, 3000);
+    }
+
+    function checkGuess() {
+      var userGuess = document.getElementById('guessInput').value.trim().toLowerCase();
+      var correctCountry = document.getElementById('guessInput').dataset.correctCountry.toLowerCase();
+      if (userGuess === correctCountry) {
+        showAnimationAndRedirect('happyAnimation', "/menu"); // Redirect to menu after animation
       } else {
-        alert('Incorrect guess. Try again!');
+        alert('Sorry, Try again!');
       }
     }
 
-    function showHappyAnimation() {
-      var animationContainer = document.getElementById('happyAnimation');
-
-      // Show the animation
-      animationContainer.classList.add('show');
-
-      // Hide the animation after 3 seconds
-      setTimeout(function() {
-        animationContainer.classList.remove('show');
-      }, 3000);
+    function skipGuess() {
+      window.location.href = "/menu";
     }
   </script>
 </body>
