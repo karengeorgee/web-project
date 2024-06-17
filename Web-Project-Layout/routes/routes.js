@@ -20,7 +20,7 @@ function setupRoutes(app) {
   app.use("/Reservation",Reservationroutes);
   app.use("/mapmenu", mapMenuRoutes); // Add the map menu routes
   app.use("/menu", menuRoutes); // Setup menu route
-  app.use("/bgrb", bgrbRoutes); // Setup menu route
+  app.use("/bgrb", bgrbRoutes); // Setup  route
 
 
 

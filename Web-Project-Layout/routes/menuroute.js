@@ -4,7 +4,7 @@ const express = require('express');
 const router = express.Router();
 const menuController = require('../controllers/menuController'); // Adjust path as needed
 
-router.get("/menu", (req, res) => {
+router.get("/", (req, res) => {
   menuController.showMenuPage(req, res);
 });
 
