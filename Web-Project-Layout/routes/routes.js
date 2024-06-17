@@ -7,6 +7,7 @@ const sjakRoutes = require("./SJAKroutes"); // Import the SJAK route file
 const mapMenuRoutes = require("./mapmenuroutes"); // Import the map menu route file
 const menuRoutes = require("./menuroute"); // Import menu route file
 const bgrbRoutes = require('./bgrbRoutes');
+const userDRoutes = require('./userDRoutes');
 
 
 
@@ -21,7 +22,7 @@ function setupRoutes(app) {
   app.use("/mapmenu", mapMenuRoutes); // Add the map menu routes
   app.use("/menu", menuRoutes); // Setup menu route
   app.use("/bgrb", bgrbRoutes); // Setup  route
-
+  app.use("/userdash", userDRoutes); // Setup  route
 
 
   // Catch-all route for handling 404 errors
