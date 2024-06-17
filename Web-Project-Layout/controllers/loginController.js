@@ -31,11 +31,22 @@ const loginProcess = async (req, res) => {
 
     // Store user data in the session
     req.session.user = user;
+   
+
+
+    if (user.role === 'admin') {
+     return res.redirect("/bgrb");
+    } else {
+      return res.redirect("/userdash");
+    }
+
+
 
     res.render("SJAK", {
       currentPage: "home",
       user: req.session.user === undefined ? "" : req.session.user,
     });
+
   } catch (error) {
     console.error(error);
     res.status(500).send("Internal Server Error");

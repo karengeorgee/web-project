@@ -42,4 +42,55 @@ app.get("/logout", (req, res) => {
   });
 });
 
+
+
+// Dashboard routes
+app.get("/admin/dashboard", (req, res) => {
+  if (req.session.user && req.session.user.role === 'admin') {
+    res.render("bgrb", {
+      user: req.session.user,
+      currentPage: "adminDashboard"
+    });
+  } else {
+    res.status(403).send("Forbidden");
+  }
+});
+
+app.get("/user/dashboard", (req, res) => {
+  if (req.session.user && req.session.user.role === 'user') {
+    res.render("userdash", {
+      user: req.session.user,
+      currentPage: "userDashboard"
+    });
+  } else {
+    res.status(403).send("Forbidden");
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 module.exports = app;
