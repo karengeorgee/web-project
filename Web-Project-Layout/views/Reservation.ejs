@@ -16,6 +16,41 @@
       background-size: cover;
       background-repeat: no-repeat;
     }
+
+body {
+    background-color: #333; /* Example background to see the white labels clearly */
+}
+
+label {
+    color: white; /* Set label color to white */
+    display: block; /* Ensures each label is on a new line */
+    margin-bottom: 10px; /* Space between labels and inputs */
+    
+}
+
+input, select, button {
+    display: block; /* Ensures each input, select, and button is on a new line */
+    margin-bottom: 20px; /* Space between inputs */
+    padding: 10px; /* Padding for better usability */
+    width: 100%; /* Full width for better layout */
+    max-width: 300px; /* Max width to keep the form narrow */
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+
+}
+
+button {
+    background-color: #4CAF50; /* Example button background color */
+    color: white; /* Button text color */
+    border: none; /* Remove border */
+    cursor: pointer; /* Change cursor on hover */
+    padding: 8px 16px; /* Reduce padding to decrease size */
+    font-size: 14px; /* Decrease font size */
+    width: auto; /* Adjust width as needed */
+    height: auto; /* Adjust height as needed */
+    border-radius: 4px; /* Optional: smaller border radius for a more compact button */
+
+}
   </style>
 </head>
 <body>
@@ -30,22 +65,33 @@
       <p class="field-small-p">Please enter your first name, last name and email address</p>
     </div>
     <!-- Updated form with action attribute -->
-    <form action="/reservation/create" method="post">
-      <input id="fn" placeholder="First Name..." type="text" class="textfield" name="fn">
-      <input id="ln" placeholder="Last Name..." type="text" class="textfield" name="ln"><br><br>
-      <input id="em" type="email" name="em" placeholder="name@example.com"><br>
-      <div class="select">
-        <p class="textcol">Preferred seating</p>
-        <select name="table">
+    <form action="/reservation/create" method="POST">
+      <label for="fn">First Name:</label>
+      <input type="text" id="fn" name="fn" required>
+      
+      <label for="ln">Last Name:</label>
+      <input type="text" id="ln" name="ln" required>
+      
+      <label for="em">Email:</label>
+      <input type="email" id="em" name="em" required>
+      
+      <label for="sn">Number of Guests:</label>
+      <input type="number" id="sn" name="sn" required>
+      
+      <label for="table">Preferred Seating:</label>
+      <select id="table" name="table" required>
           <option value="Outdoor">Outdoor</option>
           <option value="Indoor">Indoor</option>
-        </select>
-        <p class="textcol">Number of seats</p>
-        <input id="sn" type="number" name="sn">
-      </div>
-      <br>
-      <input type="submit" onclick="validate()" value="Reserve"> 
-    </form>
+      </select>
+      
+      <label for="date">Date:</label>
+      <input type="date" id="date" name="date" value="<%= date %>" required>
+      
+      <label for="time">Time:</label>
+      <input type="time" id="time" name="time" value="<%= time %>" required>
+      
+      <button type="submit">Reserve</button>
+  </form>
   </div>
   <div class="white-background"></div>
   <div class="menu-toggle" onclick="toggleMenu()">

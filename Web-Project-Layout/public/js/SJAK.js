@@ -13,7 +13,6 @@ document.querySelectorAll(".menu-items a").forEach(function(link) {
     });
 });
 
-
 var calendar = flatpickr("#calendar", {
     enableTime: true, 
     dateFormat: "Y-m-d H:i", 
@@ -26,18 +25,16 @@ document.querySelector(".book-button").addEventListener("click", function() {
     calendar.open();
 });
 
-
 var doneButton = document.createElement('button');
 doneButton.innerHTML = 'Done';
 doneButton.id = 'done-button';
 
-
-
 doneButton.addEventListener("click", function() {
     calendar.close();
-     window.location.href = "/Reservation";
+    var selectedDateTime = calendar.input.value; // Get the selected date and time
+    var [date, time] = selectedDateTime.split(' ');
+    window.location.href = `/Reservation?date=${date}&time=${time}`;
 });
-
 
 calendar.calendarContainer.appendChild(doneButton);
 
@@ -66,5 +63,3 @@ document.addEventListener("DOMContentLoaded", function() {
 
     window.addEventListener("scroll", fadeInImages);
 });
-
-//bngrb npush

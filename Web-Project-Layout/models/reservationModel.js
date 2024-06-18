@@ -21,6 +21,12 @@ const reservationSchema = new mongoose.Schema({
     required: true,
     min: 1,
   },
+  preferredSeating: {
+    type: String,
+    required: true,
+    enum: ["Outdoor", "Indoor"], // Specify the allowed values
+  },
+  
 });
 
 const Reservation = mongoose.model("Reservation", reservationSchema);
