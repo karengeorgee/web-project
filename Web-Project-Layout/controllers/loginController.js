@@ -7,6 +7,7 @@ const loginProcess = async (req, res) => {
     // Retrieve username and password from req.body
     const { username, password } = req.body;
 
+    
     // Search for the user in the database
     const user = await User.findOne({ username });
 
