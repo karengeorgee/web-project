@@ -34,6 +34,9 @@ const reservationSchema = new mongoose.Schema({
   
 });
 
+    // Retrieve all reservations
+   
+  
 const Reservation = mongoose.model("Reservation", reservationSchema);
 
 module.exports = Reservation;

@@ -5,42 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/css/bgrb.css">
   <link href="https://fonts.googleapis.com/css2?family=Averia+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-
   <title>Welcome to the User Dashboard</title>
-</head>
-<body>
-  <h1>Welcome to the User Dashboard!</h1>
-
-
-<header class="test">
-  <div id="logo">
-    <img src="/images/Untitled-1.png" alt="Logo" style="width: 100%;">
-  </div>
-</header>
-<div class="slideshow-container">
-  <div class="mySlides fade">
-    <img src="/images/SachiHeliopolisInterior1-ezgif.com-webp-to-jpg-converter.jpg" style="width:100%">
-  </div>
-  <div class="mySlides fade">
-    <img src="/images/IMG_1933-ezgif.com-webp-to-jpg-converter.jpg "style="width:100%">
-  </div>
-  <div class="mySlides fade">
-    <img src="/images/62f845_c977822bfe59464a9fdfe3728d899609mv2-ezgif.com-webp-to-jpg-converter.jpg "style="width:100%">
-  </div>
-</div>
-<style>
-  body {
+  <style>
+    body {
       font-family: 'Poppins', sans-serif;
       margin: 0;
-      height:100vh;
+      height: 100vh;
       padding: 0;
       background-position: center;
       background-attachment: fixed;
       background-image: url("/images/WhatsApp Image 2024-05-08 at 3.53.25 PM.jpeg");
       background-size: cover; /* Cover the entire background */
       background-repeat: no-repeat; /* Prevent the image from repeating */
-  }
-  .slideshow-container {
+    }
+    .slideshow-container {
       max-width: 1000px;
       position: relative;
       margin: auto;
@@ -56,23 +34,40 @@
       from {opacity: .4} 
       to {opacity: 1}
     }
-</style>
+  </style>
+</head>
+<body>
+  <h1>Welcome to the User Dashboard!</h1>
+  <header class="test">
+    <div id="logo">
+      <img src="/images/Untitled-1.png" alt="Logo" style="width: 100%;">
+    </div>
+  </header>
+  <div class="slideshow-container">
+    <div class="mySlides fade">
+      <img src="/images/SachiHeliopolisInterior1-ezgif.com-webp-to-jpg-converter.jpg" style="width:100%">
+    </div>
+    <div class="mySlides fade">
+      <img src="/images/IMG_1933-ezgif.com-webp-to-jpg-converter.jpg" style="width:100%">
+    </div>
+    <div class="mySlides fade">
+      <img src="/images/62f845_c977822bfe59464a9fdfe3728d899609mv2-ezgif.com-webp-to-jpg-converter.jpg" style="width:100%">
+    </div>
+  </div>
 
-<div class="white-background"></div>
-<div class="menu-toggle" onclick="toggleMenu()">
-  <div class="bar"></div>
-  <div class="bar"></div>
-  <div class="bar"></div>
-</div>   
+  <div class="white-background"></div>
+  <div class="menu-toggle" onclick="toggleMenu()">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>   
 
-<div class="menu-items" id="menuItems">
+  <div class="menu-items" id="menuItems">
     <a href="/">Home</a>
     <a href="#" onclick="currentreservations()">View Current Reservations</a>
     <a href="/">Book your table</a>
     <a href="#" onclick="reservationshistory()">Booking history</a>
-  
-</div>
-</head>
+  </div>
 
   <div class="Container">
     <div class="weldiv">
@@ -108,25 +103,25 @@
 </div>
 
 
-<div id="bookinghis" class="container" style="display: none;">
-  <h2>Booking History</h2>
-  <table id="history">
-    <thead>
-      <tr>
-        <th>reservation number</th>
-        <th>name</th>
-        <th>Preferred seating</th>
-        <th>Number of seats</th>
-        
-      </tr>
-    </thead>
-    <tbody id="historyTableBody">
-      <!-- Reservation rows will be dynamically inserted here -->
-    </tbody>
-  </table>
-</div>
+    <div id="bookinghis" class="container" style="display: none;">
+      <h2>Booking History</h2>
+      <table id="history">
+        <thead>
+          <tr>
+            <th>Reservation Number</th>
+            <th>Name</th>
+            <th>Preferred Seating</th>
+            <th>Number of Seats</th>
+          </tr>
+        </thead>
+        <tbody id="historyTableBody">
+          <!-- Reservation rows will be dynamically inserted here -->
+        </tbody>
+      </table>
+    </div>
 
 <script src="/js/userdash.js"></script>
 
 </html>
-</body>
+
+
