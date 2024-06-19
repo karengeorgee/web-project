@@ -1,4 +1,8 @@
 // login.js
+function toggleMenu() {
+  var menuItems = document.getElementById("menuItems");
+  menuItems.classList.toggle("show");
+}
 
 document.getElementById("showPassword").addEventListener("click", function () {
   var passwordField = document.getElementById("password");
@@ -39,7 +43,4 @@ document
     // If validation passes, submit the form
     this.submit();
   });
-  function toggleMenu() {
-    var menuItems = document.getElementById("menuItems");
-    menuItems.classList.toggle("show");
-  }
+ 

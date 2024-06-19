@@ -11,7 +11,6 @@ const userDRoutes = require('./userDRoutes');
 
 
 
-
 function setupRoutes(app) {
   // Initialize your routes here...
  // app.use("/SJAK", indexRoutes);
@@ -23,6 +22,8 @@ function setupRoutes(app) {
   app.use("/menu", menuRoutes); // Setup menu route
   app.use("/bgrb", bgrbRoutes); // Setup  route
   app.use("/userdash", userDRoutes); // Setup  route
+
+  
 
 
   // Catch-all route for handling 404 errors
