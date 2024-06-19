@@ -26,6 +26,11 @@ const reservationSchema = new mongoose.Schema({
     required: true,
     enum: ["Outdoor", "Indoor"], // Specify the allowed values
   },
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true,
+  },
   
 });
 

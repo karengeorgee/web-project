@@ -1,4 +1,4 @@
-const Reservation = require('../models/ReservationModel');
+const Reservation = require('../models/reservationModel');
 
 const showReservationPage = (req, res) => {
   const { date, time } = req.query;
@@ -11,7 +11,7 @@ const showReservationPage = (req, res) => {
 };
 
 const createReservation = async (req, res) => {
-  const { fn, ln, em, sn, table, date, time } = req.body;
+  const { fn, ln, em, sn, table, date, time,userid } = req.body;
   const lettersOnly = /^[A-Za-z]+$/;
 
   // Server-side validation
@@ -46,7 +46,8 @@ const createReservation = async (req, res) => {
       seatNumber: sn,
       preferredSeating: table,
       reservationDate: date,
-      reservationTime: time
+      reservationTime: time,
+      user:userid
     });
 
     await newReservation.save();

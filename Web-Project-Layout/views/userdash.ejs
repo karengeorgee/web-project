@@ -78,7 +78,7 @@
     <div class="weldiv">
   
 
-<script src="/js/userdash.js"></script>
+<!-- Assuming reservations are passed from the controller -->
 <div id="Viewcurrentreservtaions" class="container" style="display: none;">
   <h2>View current reservations</h2>
   <table id="current">
@@ -92,10 +92,21 @@
       </tr>
     </thead>
     <tbody id="currentTableBody">
-      <!-- User rows will be dynamically inserted here -->
+      <% reservations.forEach(reservation => { %>
+        <tr>
+          <td><%= reservation.firstName %> <%= reservation.lastName %></td>
+          <td><%= reservation.reservationNumber %></td>
+          <td><%= reservation.seatNumber %></td>
+          <td><%= reservation.preferredSeating %></td>
+          <td>
+            <!-- Actions for editing or deleting reservations -->
+          </td>
+        </tr>
+      <% }); %>
     </tbody>
   </table>
 </div>
+
 
 <div id="bookinghis" class="container" style="display: none;">
   <h2>Booking History</h2>
@@ -115,6 +126,7 @@
   </table>
 </div>
 
+<script src="/js/userdash.js"></script>
 
 </html>
 </body>

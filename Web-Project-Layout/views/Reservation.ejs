@@ -68,6 +68,7 @@ button {
     </div>
     <!-- Updated form with action attribute -->
     <form action="/reservation/create" method="POST">
+      <input type="hidden" name="userid" value="<%= user._id %>">          <!--veryimportant-->
       <label for="fn">First Name:</label>
       <input type="text" id="fn" name="fn" required>
       
@@ -81,6 +82,7 @@ button {
       <input type="number" id="sn" name="sn" required>
       
       <label for="table">Preferred Seating:</label>
+      
       <select id="table" name="table" required>
           <option value="Outdoor">Outdoor</option>
           <option value="Indoor">Indoor</option>
@@ -94,6 +96,7 @@ button {
       
       <button type="submit">Reserve</button>
   </form>
+  
   </div>
   <div class="white-background"></div>
   <div class="menu-toggle" onclick="toggleMenu()">

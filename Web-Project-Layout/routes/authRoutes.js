@@ -1,96 +1,36 @@
-const express = require("express");
-const loginController = require("../controllers/loginController");
-const signupController = require("../controllers/signupController");
+// routes/authRoutes.js
+const express = require('express');
+const loginController = require('../controllers/loginController');
+const signupController = require('../controllers/signupController');
 const { sign } = require("crypto");
-const app = express();
+const router = express.Router();
 
-app.get("/login", (req, res) => {
-  res.render("login", {
-    currentPage: "login",
-    user: req.session.user === undefined ? "" : req.session.user,
+router.get('/login', (req, res) => {
+  res.render('login', {
+    currentPage: 'login',
+    user: req.session.user === undefined ? '' : req.session.user,
   });
 });
-app.get("/signup", (req, res) => {
-  res.render("signup", {
-    currentPage: "signup",
-    user: req.session.user === undefined ? "" : req.session.user,
+
+router.post('/login', loginController.loginProcess);
+
+router.get('/signup', (req, res) => {
+  res.render('signup', {
+    currentPage: 'signup',
+    user: req.session.user === undefined ? '' : req.session.user,
   });
 });
-app.post("/login", loginController.loginProcess);
-app.post("/signup", signupController.registrationProcess);
 
-// Add a middleware to check if the user is logged in
-app.use((req, res, next) => {
-  if (req.session.user !== undefined) {
-    next();
-  } else {
-    res.render("404", {
-      user: req.session.user === undefined ? "" : req.session.user,
-      currentPage: "404",
-    });
-  }
-});
+router.post('/signup', signupController.registrationProcess);
 
-// Add the logout route
-app.get("/logout", (req, res) => {
+router.get('/logout', (req, res) => {
   req.session.destroy((err) => {
     if (err) {
-      return res.redirect("/");
+      return res.redirect('/');
     }
-    res.clearCookie("connect.sid");
-    res.redirect("/auth/login");
+    res.clearCookie('connect.sid');
+    res.redirect('/auth/login');
   });
 });
 
-
-
-// Dashboard routes
-app.get("/admin/dashboard", (req, res) => {
-  if (req.session.user && req.session.user.role === 'admin') {
-    res.render("bgrb", {
-      user: req.session.user,
-      currentPage: "adminDashboard"
-    });
-  } else {
-    res.status(403).send("Forbidden");
-  }
-});
-
-app.get("/user/dashboard", (req, res) => {
-  if (req.session.user && req.session.user.role === 'user') {
-    res.render("userdash", {
-      user: req.session.user,
-      currentPage: "userDashboard"
-    });
-  } else {
-    res.status(403).send("Forbidden");
-  }
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-module.exports = app;
+module.exports = router;
