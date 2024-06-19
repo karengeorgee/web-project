@@ -1,4 +1,4 @@
-const Reservation = require('../models/ReservationModel');
+const Reservation = require('../models/reservationModel');
 
 const showReservationPage = (req, res) => {
   const { date, time } = req.query;
