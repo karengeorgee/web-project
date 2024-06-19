@@ -1,6 +1,6 @@
 
 // reservationController.js
-const Reservation = require('../models/ReservationModel');
+const Reservation = require('../models/reservationModel');
 
 const showReservationPage = (req, res) => {
   res.render("Reservation", {

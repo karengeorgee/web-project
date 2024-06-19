@@ -14,14 +14,14 @@ function currentreservations() {
     currentTableBody.innerHTML = ''; 
     
     var reservationsData = [
-        { name: "John Doe", reservationNumber: "001", seats: 4, preferredSeating: "Indoor" },
-        { name: "Jane Smith", reservationNumber: "002", seats: 2, preferredSeating: "Outdoor" },
-        { name: "Michael Johnson", reservationNumber: "003", seats: 3, preferredSeating: "Indoor" },
-        { name: "Ahmed Tamer", reservationNumber: "004", seats: 5, preferredSeating: "Outdoor" },
-        { name: "Karen", reservationNumber: "005", seats: 6, preferredSeating: "Indoor" },
-        { name: "Jane ", reservationNumber: "006", seats: 2, preferredSeating: "Outdoor" },
-        { name: "Michael ", reservationNumber: "007", seats: 3, preferredSeating: "Indoor" },
-        { name: " Tamer", reservationNumber: "008", seats: 5, preferredSeating: "Outdoor" },
+        { name: "John Doe", reservationNumber: "001", seats: 4, preferredSeating: "Indoor",status:"pending" },
+        { name: "Jane Smith", reservationNumber: "002", seats: 2, preferredSeating: "Outdoor",status:"pending"  },
+        { name: "Michael Johnson", reservationNumber: "003", seats: 3, preferredSeating: "Indoor" ,status:"pending"},
+        { name: "Ahmed Tamer", reservationNumber: "004", seats: 5, preferredSeating: "Outdoor" ,status:"pending"},
+        { name: "Karen", reservationNumber: "005", seats: 6, preferredSeating: "Indoor" ,status:"pending"},
+        { name: "Jane ", reservationNumber: "006", seats: 2, preferredSeating: "Outdoor" ,status:"pending"},
+        { name: "Michael ", reservationNumber: "007", seats: 3, preferredSeating: "Indoor" ,status:"pending"},
+        { name: " Tamer", reservationNumber: "008", seats: 5, preferredSeating: "Outdoor" ,status:"pending"},
         
     ];
 
@@ -34,6 +34,7 @@ function currentreservations() {
                 <td>${reservation.reservationNumber}</td>
                 <td>${reservation.seats}</td>
                 <td>${reservation.preferredSeating}</td>
+                <td>${reservation.status}</td>
                 <td>
                     <button>Edit</button>
                     <button>Delete</button>
