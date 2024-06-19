@@ -1,16 +1,17 @@
-
-// reservationController.js
-const Reservation = require('../models/reservationModel');
+const Reservation = require('../models/ReservationModel');
 
 const showReservationPage = (req, res) => {
+  const { date, time } = req.query;
   res.render("Reservation", {
     currentPage: "Reservation",
     user: req.session.user === undefined ? "" : req.session.user,
+    date: date || '',
+    time: time || ''
   });
 };
 
 const createReservation = async (req, res) => {
-  const { fn, ln, em, sn, table } = req.body;
+  const { fn, ln, em, sn, table, date, time } = req.body;
   const lettersOnly = /^[A-Za-z]+$/;
 
   // Server-side validation
@@ -29,6 +30,12 @@ const createReservation = async (req, res) => {
   if (!table || !['Outdoor', 'Indoor'].includes(table)) {
     return res.status(400).send("Invalid seating preference. Please select 'Outdoor' or 'Indoor'.");
   }
+  if (!date) {
+    return res.status(400).send("Invalid date. Please select a valid date.");
+  }
+  if (!time) {
+    return res.status(400).send("Invalid time. Please select a valid time.");
+  }
 
   try {
     // Create and save the new reservation
@@ -37,13 +44,15 @@ const createReservation = async (req, res) => {
       lastName: ln,
       email: em,
       seatNumber: sn,
-      preferredSeating: table
+      preferredSeating: table,
+      reservationDate: date,
+      reservationTime: time
     });
 
     await newReservation.save();
 
-    // If no error, redirect to confirmation page
-    res.redirect("/reservation/confirmation");
+    // If no error, redirect to confirmation page with reservation details
+    res.redirect(`/reservation/confirmation?date=${date}&time=${time}&guests=${sn}`);
   } catch (error) {
     console.error("Error creating reservation:", error);
     res.status(500).send("An error occurred while creating the reservation. Please try again later.");
@@ -51,9 +60,16 @@ const createReservation = async (req, res) => {
 };
 
 const showConfirmationPage = (req, res) => {
+  const { date, time, guests } = req.query;
+
   res.render("confirmation", {
     currentPage: "confirmation",
     user: req.session.user === undefined ? "" : req.session.user,
+    reservationDetails: {
+      date,
+      time,
+      guests
+    }
   });
 };
 
@@ -62,4 +78,3 @@ module.exports = {
   createReservation,
   showConfirmationPage
 };
-

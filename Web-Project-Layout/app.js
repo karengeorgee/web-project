@@ -7,6 +7,7 @@ require("dotenv").config();
 const { connectToMongoDB } = require("./config/mongo.js");
 const { setupRoutes } = require("./routes/routes.js");
 
+
 const app = express();
 
 // Serve static files
@@ -15,6 +16,10 @@ app.use(express.static("public", { maxAge: "7d" }));
 // Body parser middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+
+
+
 
 // Set view engine
 app.set("view engine", "ejs");

@@ -3,10 +3,10 @@ const mongoose = require
 const app = express();
 
 app.get("/", (req, res) => {
-  res.render("index", {
-    currentPage: "home",
-    user: req.session.user === undefined ? "" : req.session.user,     //daa bta33 el sessions
-  });
+res.render("index", {
+currentPage: "home",
+user: req.session.user === undefined ? "" : req.session.user,     //daa bta33 el sessions
+});
 });
 
 

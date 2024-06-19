@@ -1,4 +1,3 @@
-
 const express = require("express");
 const reservationController = require("../controllers/ReservationController");
 const router = express.Router();
@@ -10,6 +9,6 @@ router.get("/", reservationController.showReservationPage);
 router.post("/create", reservationController.createReservation);
 
 // Route to show reservation confirmation page
-router.get("/confirmation", reservationController.showConfirmationPage);
+router.get('/confirmation', reservationController.showConfirmationPage);
 
 module.exports = router;

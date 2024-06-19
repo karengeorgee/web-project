@@ -34,7 +34,7 @@ function validate(){
   
   }
   function closePopup(){
-    window.location.href = "/SJAK";
+    window.location.href = "/";
   }
   
   function toggleMenu() {
