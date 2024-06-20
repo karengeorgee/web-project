@@ -6,7 +6,7 @@ exports.getUserDashboard = async(req, res) => {
   const reservations = await Reservation.find({ user: userId }); // Use correct field for filtering
   res.render('userdash', {
     username: req.session.username || 'Guest',
-    reservations:reservations
+    reservations:reservations                   //7tena daa kman
   });
 };
 

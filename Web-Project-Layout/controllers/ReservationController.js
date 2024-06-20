@@ -11,7 +11,7 @@ const showReservationPage = (req, res) => {
 };
 
 const createReservation = async (req, res) => {
-  const { fn, ln, em, sn, table, date, time,userid } = req.body;
+  const { fn, ln, em, sn, table, date, time,userid } = req.body;         //zwdna henna el userid
   const lettersOnly = /^[A-Za-z]+$/;
 
   // Server-side validation
@@ -47,7 +47,7 @@ const createReservation = async (req, res) => {
       preferredSeating: table,
       reservationDate: date,
       reservationTime: time,
-      user:userid
+      user:userid                        //zwdna henna user:userid
     });
 
     await newReservation.save();
