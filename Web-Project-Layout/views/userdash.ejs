@@ -79,10 +79,13 @@
   <table id="current">
     <thead>
       <tr>
-        <th> Name</th>
+        <th>Name</th>
         <th>reservation number</th>
         <th>number of seats</th>
-        <th>Preferred seating</th>
+        <th>Preferred seating</th> 
+        <th>Date</th>
+        <th>Time</th>
+        <th>Status</th>
         <th>Actions</th>
       </tr>
     </thead>
@@ -93,8 +96,20 @@
           <td><%= reservation.reservationNumber %></td>
           <td><%= reservation.seatNumber %></td>
           <td><%= reservation.preferredSeating %></td>
+          <td><%= reservation.Date %></td>
+          <td><%= reservation.Time %></td>
+          <td id="status-<%= reservation.reservationNumber %>">
+            <% if (reservation.status === 'Pending') { %>
+              <span class="pending">Pending</span>
+            <% } else if (reservation.status === 'Confirmed') { %>
+              <span class="confirmed">Confirmed</span>
+            <% } else if (reservation.status === 'Cancelled') { %>
+              <span class="cancelled">Cancelled</span>
+            <% } %>
+          </td>
           <td>
-            <!-- Actions for editing or deleting reservations -->
+            <button class="edit-button">Edit</button>
+            <button class="delete-button">Delete</button>
           </td>
         </tr>
       <% }); %>
@@ -123,5 +138,3 @@
 <script src="/js/userdash.js"></script>
 
 </html>
-
-
