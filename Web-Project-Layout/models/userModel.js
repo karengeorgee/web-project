@@ -1,4 +1,4 @@
-// user.js
+// userModel.js
 const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
@@ -16,10 +16,8 @@ const userSchema = new mongoose.Schema({
     default: "user",
   },
   // Add more fields as needed
-  // Add more fields as needed
-  
-}) 
-const userModel=mongoose.model("users",userSchema)
+});
 
+const User = mongoose.model("User", userSchema);
 
 module.exports = User;

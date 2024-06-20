@@ -7,7 +7,6 @@ const loginProcess = async (req, res) => {
     // Retrieve username and password from req.body
     const { username, password } = req.body;
 
-    
     // Search for the user in the database
     const user = await User.findOne({ username });
 
@@ -32,21 +31,12 @@ const loginProcess = async (req, res) => {
 
     // Store user data in the session
     req.session.user = user;
-   
-
 
     if (user.role === 'admin') {
-     return res.redirect("/bgrb");
+      return res.redirect("/bgrb");
     } else {
       return res.redirect("/userdash");
     }
-
-
-
-    res.render("SJAK", {
-      currentPage: "home",
-      user: req.session.user === undefined ? "" : req.session.user,
-    });
 
   } catch (error) {
     console.error(error);
