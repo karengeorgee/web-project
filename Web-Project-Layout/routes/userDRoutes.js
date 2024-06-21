@@ -1,7 +1,7 @@
 // routes/userDRoutes.js
 const express = require('express');
 const authMiddleware = require('../middleware/authMiddleware'); // Import authentication middleware
-const { getUserDashboard, getUserReservations } = require('../controllers/userDController'); // Import user dashboard controllers
+const { getUserDashboard, getUserReservations, getUserBookingHistory } = require('../controllers/userDController'); // Import user dashboard controllers
 
 const authRoutes = require('./authRoutes'); // Import authentication routes
 
@@ -15,5 +15,9 @@ router.get('/', authMiddleware.isAuthenticated, getUserDashboard);
 
 // Route to fetch user reservations if authenticated
 router.get('/reservations', authMiddleware.isAuthenticated, getUserReservations);
+
+
+router.get('/reservations', authMiddleware.isAuthenticated, getUserBookingHistory);
+
 
 module.exports = router;

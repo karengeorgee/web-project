@@ -56,7 +56,7 @@ const createReservation = async (req, res) => {
     res.redirect(`/reservation/confirmation?date=${date}&time=${time}&guests=${sn}`);
   } catch (error) {
     console.error("Error creating reservation:", error);
-    res.status(500).send("An error occurred while creating the reservation. Please try again later.");
+    res.status(500).send("You should login to make a reservation.");
   }
 };
 

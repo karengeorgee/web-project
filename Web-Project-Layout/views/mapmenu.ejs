@@ -122,7 +122,7 @@
       var userGuess = document.getElementById('guessInput').value.trim().toLowerCase();
       var correctCountry = document.getElementById('guessInput').dataset.correctCountry.toLowerCase();
       if (userGuess === correctCountry) {
-        showAnimationAndRedirect('happyAnimation', "/menu"); // Redirect to menu after animation
+        showAnimationAndRedirect('happyAnimation', "/mycoupons"); // Redirect to menu after animation
       } else {
         alert('Sorry, Try again!');
       }
@@ -134,3 +134,4 @@
   </script>
 </body>
 </html>
+

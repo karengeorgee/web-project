@@ -1,5 +1,3 @@
-// mapmenuRoute.js
-
 const express = require("express");
 const mapmenuController = require("../controllers/mapmenuController");
 const router = express.Router();
@@ -29,4 +27,15 @@ router.get("/skipGuess/:menu", (req, res) => {
     });
   });
 
+
+  router.get("/mycoupons", (req, res) => {
+    const country = req.query.country; // Get the country from query parameter
+    res.render("mycoupons", {
+      currentPage: "My Coupons",
+      user: req.session.user === undefined ? "" : req.session.user,
+      country: country
+    });
+  });
+  
 module.exports = router;
+

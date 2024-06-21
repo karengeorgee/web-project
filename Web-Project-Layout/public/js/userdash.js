@@ -38,24 +38,28 @@ function currentreservations() {
 
 function reservationshistory() {
     var bookinghis = document.getElementById("bookinghis");
-    var historyTableBody = document.getElementById("historyTableBody");
+    var historyTableBody = document.getElementById("bookinghistable");
     bookinghis.style.display = "block";
     menuItems.classList.remove("show");
 
     fetch('/reservations') // This path should match the route defined in the backend
-        .then(response => response.json())
-        .then(reservations => {
-            historyTableBody.innerHTML = '';
-            reservations.forEach(reservation => {
-                var reservationRow = `
-                    <tr>
-                        <td>${reservation._id}</td>
-                        <td>${reservation.firstName} ${reservation.lastName}</td>
-                        <td>${reservation.preferredSeating}</td>
-                        <td>Number of seats: ${reservation.seatNumber}</td>
-                    </tr>
-                `;
-                historyTableBody.innerHTML += reservationRow;
+    .then(response => response.json())
+    .then(reservations => {
+        currentTableBody.innerHTML = '';
+        reservations.forEach(reservation => {
+            var reservationRow = `
+                <tr>
+                    <td>${reservation.firstName} ${reservation.lastName}</td>
+                    <td>${reservation._id}</td>
+                    <td>${reservation.seatNumber}</td>
+                    <td>${reservation.preferredSeating}</td>
+                    <td>
+                        <button>Edit</button>
+                        <button>Delete</button>
+                    </td>
+                </tr>
+            `;
+            historyTableBody.innerHTML += reservationRow;
             });
         })
         .catch(err => console.error(err));
