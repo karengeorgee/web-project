@@ -239,6 +239,11 @@ input[type="submit"]:hover {
 #contact-us-section ul li {
   margin-bottom: 10px;
 }
-h2{
+
+h2 {
   color: whitesmoke;
+}
+
+#errorDiv {
+  color: white; /* Change this to your desired color */
 }
