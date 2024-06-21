@@ -1,118 +1,116 @@
-
-
 #logo {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    z-index: 1; 
-    width: auto; 
-    max-width: 10%; 
-  }
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1; 
+  width: auto; 
+  max-width: 10%; 
+}
+
+.Container {
+  position: relative;
+  margin-top: 100px;
+  width: 350px;
+  height: auto;
+  background: rgba(0, 0, 0, 0.5);
+ 
+ }
+ 
+ .Container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
   
-  .Container {
-    position: relative;
-    margin-top: 100px;
-    width: 350px;
-    height: auto;
-    background: rgba(0, 0, 0, 0.5);
-   
-   }
-   
-   .Container {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.viewbut{
+  background-color: #340d0d;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+.viewbut:hover{
+  background-color: #361111;
+}
+.searchbut{
+  background-color: #340d0d;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+.searchbut:hover{
+  background-color: #361111;
+}
+.bookbut{
+  background-color: #340d0d;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+.bookbut:hover{
+  background-color: #361111;
+ }
+
+.historybut{
+  background-color: #340d0d;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+.historybut:hover{
+  background-color: #361111;
+} 
+.homebut{
+  background-color: #340d0d;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+ 
+}
+.homebut{
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 15px ;
   
-    
-  }
-  
-  .viewbut{
-    background-color: #340d0d;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    padding: 10px 20px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-  }
-  .viewbut:hover{
-    background-color: #361111;
-  }
-  .searchbut{
-    background-color: #340d0d;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    padding: 10px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-  }
-  .searchbut:hover{
-    background-color: #361111;
-  }
-  .bookbut{
-    background-color: #340d0d;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    padding: 10px 20px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-  }
-  .bookbut:hover{
-    background-color: #361111;
-   }
-  
-  .historybut{
-    background-color: #340d0d;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    padding: 10px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-  }
-  .historybut:hover{
-    background-color: #361111;
-  } 
-  .homebut{
-    background-color: #340d0d;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    padding: 10px 20px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-   
-  }
-  .homebut{
-    width: 100%;
-    padding: 10px;
-    margin-top: 10px;
-    margin-bottom: 15px ;
-    
-    border-radius: 5px;
-    box-sizing: border-box;
-    background:  #340d0d;
-    color: whitesmoke;
-  }
-  .homebut:hover{
-    background-color: #361111;
-  }
-  h1 {
-    text-align: center;
-    color: wheat;
-    padding-top: 200px;
-    font-family: 'Averia Libre', sans-serif;
-    margin-bottom: 20px;
-    }
-  h2{
+  border-radius: 5px;
+  box-sizing: border-box;
+  background:  #340d0d;
   color: whitesmoke;
+}
+.homebut:hover{
+  background-color: #361111;
+}
+h1 {
+  text-align: center;
+  color: wheat;
+  padding-top: 200px;
+  font-family: 'Averia Libre', sans-serif;
+  margin-bottom: 20px;
   }
+h2{
+color: whitesmoke;
+}
