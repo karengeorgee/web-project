@@ -4,6 +4,7 @@ function validate(){
     var b=document.getElementById('ln').value;
     var c=document.getElementById('em').value;
     var d=document.getElementById('sn').value;
+    
     var lettersOnly = /^[A-Za-z]+$/; 
     
     if (a == "") {
@@ -23,9 +24,11 @@ function validate(){
       alert("Please enter a valid seats number")
       
     }
+   
     else{
     popup.classList.add("open-popup");
     }
+
   }
   let popup=document.getElementById("popup");
   function openPopup(){
@@ -41,5 +44,5 @@ function validate(){
     var menuItems = document.getElementById("menuItems");
     menuItems.classList.toggle("show");
   }
-  
+ 
   

@@ -19,9 +19,10 @@ function currentreservations() {
                 var reservationRow = `
                     <tr>
                         <td>${reservation.firstName} ${reservation.lastName}</td>
-                        <td>${reservation._id}</td>
+                    
                         <td>${reservation.seatNumber}</td>
                         <td>${reservation.preferredSeating}</td>
+                    
                         <td>
                             <button>Edit</button>
                             <button>Delete</button>
@@ -47,15 +48,18 @@ function reservationshistory() {
         .then(reservations => {
             historyTableBody.innerHTML = '';
             reservations.forEach(reservation => {
+                if (reservation.status === "Done"){
                 var reservationRow = `
                     <tr>
                         <td>${reservation._id}</td>
                         <td>${reservation.firstName} ${reservation.lastName}</td>
                         <td>${reservation.preferredSeating}</td>
                         <td>Number of seats: ${reservation.seatNumber}</td>
+                        
                     </tr>
                 `;
                 historyTableBody.innerHTML += reservationRow;
+                }
             });
         })
         .catch(err => console.error(err));
@@ -77,4 +81,17 @@ function showSlides() {
   if (slideIndex > slides.length) {slideIndex = 1}    
   slides[slideIndex-1].style.display = "block";  
   setTimeout(showSlides, 2000);
-}
+ }
+function  Backtobookyourtable(){
+    window.location.href = '/Reservation';
+ }
+document.addEventListener('DOMContentLoaded', function () {
+    const deleteButtons = document.querySelectorAll('.delete-button');
+
+    deleteButtons.forEach(function(button) {
+      button.addEventListener('click', function() {
+        const row = this.closest('tr');
+        row.parentElement.removeChild(row);
+      });
+    });
+  });

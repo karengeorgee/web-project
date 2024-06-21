@@ -1,12 +1,15 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
+  
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/css/bgrb.css">
   <link href="https://fonts.googleapis.com/css2?family=Averia+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   <title>Welcome to the User Dashboard</title>
   <style>
+    
     body {
       font-family: 'Poppins', sans-serif;
       margin: 0;
@@ -37,6 +40,7 @@
   </style>
 </head>
 <body>
+  
   <h1>Welcome to the User Dashboard!</h1>
   <header class="test">
     <div id="logo">
@@ -80,10 +84,9 @@
     <thead>
       <tr>
         <th>Name</th>
-        <th>reservation number</th>
         <th>number of seats</th>
         <th>Preferred seating</th> 
-        <th>Date</th>
+         <th>Date</th> 
         <th>Time</th>
         <th>Status</th>
         <th>Actions</th>
@@ -93,12 +96,13 @@
       <% reservations.forEach(reservation => { %>
         <tr>
           <td><%= reservation.firstName %> <%= reservation.lastName %></td>
-          <td><%= reservation.reservationNumber %></td>
+          
           <td><%= reservation.seatNumber %></td>
           <td><%= reservation.preferredSeating %></td>
-          <td><%= reservation.Date %></td>
+          <td><%=reservation.date%></td> 
           <td><%= reservation.Time %></td>
-          <td id="status-<%= reservation.reservationNumber %>">
+          <td><%= reservation.status%></td>
+          <!-- <td id="status-<%= reservation.reservationNumber %>">
             <% if (reservation.status === 'Pending') { %>
               <span class="pending">Pending</span>
             <% } else if (reservation.status === 'Confirmed') { %>
@@ -106,10 +110,10 @@
             <% } else if (reservation.status === 'Cancelled') { %>
               <span class="cancelled">Cancelled</span>
             <% } %>
-          </td>
+          </td> -->
           <td>
-            <button class="edit-button">Edit</button>
-            <button class="delete-button">Delete</button>
+            <button class="edit-button"onclick="Backtobookyourtable()">Edit</button>
+            <button class="delete-button" onclick={deletereserv}>Delete</button>
           </td>
         </tr>
       <% }); %>
@@ -117,24 +121,41 @@
   </table>
 </div>
 
-
-    <div id="bookinghis" class="container" style="display: none;">
-      <h2>Booking History</h2>
-      <table id="history">
-        <thead>
+<div id="bookinghis" class="container" style="display: none;">
+  <h2>Booking History</h2>
+  <table id="history">
+      <thead>
           <tr>
-            <th>Reservation Number</th>
-            <th>Name</th>
-            <th>Preferred Seating</th>
-            <th>Number of Seats</th>
+              <th>Name</th>
+              <th>Number of seats</th>
+              <th>Preferred seating</th>
+              <th>Date</th>
+              <th>Time</th>
+              <th>Status</th>
+              <th>Actions</th>
           </tr>
-        </thead>
-        <tbody id="historyTableBody">
-          <!-- Reservation rows will be dynamically inserted here -->
-        </tbody>
-      </table>
-    </div>
-
+      </thead>
+      <tbody id="historyTableBody">
+        <% reservations.forEach(reservation => { %>
+          <% if (reservation.status === 'Done') { %>
+            <tr>
+              <td><%= reservation.firstName %> <%= reservation.lastName %></td>
+              <td><%= reservation.seatNumber %></td>
+              <td><%= reservation.preferredSeating %></td>
+              <td><%= reservation.date %></td> 
+              <td><%= reservation.Time %></td>
+              <td><%= reservation.status %></td>
+              <td>
+                <button class="edit-button" onclick="Backtobookyourtable()">Edit</button>
+                <button class="delete-button" onclick={deletereserv}>Delete</button>
+              </td>
+            </tr>
+          <% } %>
+        <% }); %>
+        
+      </tbody>
+  </table>
+</div>
 <script src="/js/userdash.js"></script>
 
 </html>

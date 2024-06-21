@@ -74,6 +74,7 @@ const showConfirmationPage = (req, res) => {
   });
 };
 
+
 module.exports = {
   showReservationPage,
   createReservation,

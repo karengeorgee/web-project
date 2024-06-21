@@ -6,6 +6,7 @@ const session = require("express-session");
 require("dotenv").config();
 const { connectToMongoDB } = require("./config/mongo.js");
 const { setupRoutes } = require("./routes/routes.js");
+const User = require("./models/userModel.js");
 const app = express();
 
 // Serve static files
@@ -29,6 +30,7 @@ app.use(
     saveUninitialized: true,
   })
 );
+ 
 // Setup routes
 setupRoutes(app);
 

@@ -37,6 +37,11 @@ const reservationSchema = new mongoose.Schema({
     enum: ["Pending", "Done"],
     default: "Pending", // Set default status to "Pending"
   },
+  // date: {
+  //   type: Date,
+  //   required: true,
+  //    // Set default date to the current date and time
+  // },
 });
 
     // Retrieve all reservations
