@@ -9,6 +9,7 @@ const menuRoutes = require("./menuroute"); // Import menu route file
 const bgrbRoutes = require('./bgrbRoutes');
 const userDRoutes = require('./userDRoutes');
 const couponsRoutes = require('./couponsRoutes');
+const itemRoutes = require('./itemRoutes');
 
 
 
@@ -26,6 +27,7 @@ function setupRoutes(app) {
   app.use("/bgrb", bgrbRoutes); // Setup  route
   app.use("/userdash", userDRoutes); // Setup  route
   app.use("/mycoupons", couponsRoutes); // Setup  route
+  app.use("/item", itemRoutes); // Setup  route
 
 
   
