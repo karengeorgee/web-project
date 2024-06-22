@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Reservation</title>
+    <link rel="stylesheet" href="/css/Reservation.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Averia+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/toastify-js"
+    ></script>
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        margin: 0;
+        height: 100vh;
+        padding: 0;
+        background-position: center;
+        background-attachment: fixed;
+        background-image: url("/images/f3847d_da686092542e48e5a962f3b1e69456d5mv2-ezgif.com-webp-to-jpg-converter.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+
+      body {
+        background-color: #333; /* Example background to see the white labels clearly */
+      }
+
+      label {
+        color: white; /* Set label color to white */
+        display: block; /* Ensures each label is on a new line */
+        margin-bottom: 10px; /* Space between labels and inputs */
+      }
+
+      input,
+      select,
+      button {
+        display: block; /* Ensures each input, select, and button is on a new line */
+        margin-bottom: 20px; /* Space between inputs */
+        padding: 10px; /* Padding for better usability */
+        width: 100%; /* Full width for better layout */
+        max-width: 300px; /* Max width to keep the form narrow */
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+      }
+
+      button {
+        background-color: #4caf50; /* Example button background color */
+        color: white; /* Button text color */
+        border: none; /* Remove border */
+        cursor: pointer; /* Change cursor on hover */
+        padding: 8px 16px; /* Reduce padding to decrease size */
+        font-size: 14px; /* Decrease font size */
+        width: auto; /* Adjust width as needed */
+        height: auto; /* Adjust height as needed */
+        border-radius: 4px; /* Optional: smaller border radius for a more compact button */
+      }
+    </style>
+  </head>
+  <body>
+    <div id="logo">
+      <img src="/images/Untitled-1.png" alt="Logo" style="width: 100%" />
+    </div>
+    <%- include ('../partials/nav') %>
+
+    <div class="container">
+      <div class="field">
+        <label class="Field-label"
+          >Your information:
+          <i class="-astrerisk booked-icon booked-icon-"></i>
+        </label>
+        <p class="field-small-p">
+          Please enter your first name, last name and email address
+        </p>
+      </div>
+      <form id="reservationForm">
+        <input type="hidden" name="userId" value="<%= user._id %>" />
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName" />
+
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName" />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" />
+
+        <label for="guests">Number of Guests:</label>
+        <input type="number" id="guests" name="guests" />
+
+        <label for="seating">Preferred Seating:</label>
+        <select id="seating" name="seating">
+          <option value="Outdoor">Outdoor</option>
+          <option value="Indoor">Indoor</option>
+        </select>
+
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" value="<%= date %>" />
+
+        <label for="time">Time:</label>
+        <input type="time" id="time" name="time" value="<%= time %>" />
+
+        <button type="submit">Reserve</button>
+      </form>
+    </div>
+
+    <script type="module">
+      import showMsg from "/js/toastify.js";
+      document
+        .getElementById("reservationForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          const formData = {
+            firstName: document.getElementById("firstName").value.trim(),
+            lastName: document.getElementById("lastName").value.trim(),
+            email: document.getElementById("email").value.trim(),
+            guests: document.getElementById("guests").value,
+            seatingPlace: document.getElementById("seating").value,
+            NumberOfSeats: document.getElementById("guests").value,
+            date: document.getElementById("date").value,
+            time: document.getElementById("time").value,
+            userId: document.querySelector('input[name="userId"]').value,
+          };
+
+          fetch("/reservation", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              if (data.errMsg) return showMsg(data.errMsg, "red");
+              else {
+                showMsg("Reservation created successfully", "green");
+                setTimeout(() => {
+                  location.assign(`/<%= user.role %>/<%= user._id %>`);
+                }, 2000); // 2 seconds delay
+              }
+            })
+            .catch((error) => {
+              showMsg("Error: " + error, "red");
+            });
+        });
+    </script>
+  </body>
+</html>

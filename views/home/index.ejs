@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SKAJ</title>
+
+    <link rel="stylesheet" href="/css/SJAK.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Averia+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        margin: 0;
+        height: 100vh;
+        padding: 0;
+        background: url("/images/f3847d_da686092542e48e5a962f3b1e69456d5mv2-ezgif.com-webp-to-jpg-converter.jpg")
+          center fixed no-repeat;
+        background-size: cover;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="logo">
+      <img src="/images/Untitled-1.png" alt="Logo" style="width: 100%" />
+    </div>
+
+    <div class="images-container">
+      <img
+        src="/images/WhatsApp Image 2024-05-05 at 21.07.32_c5455a23.jpg"
+        alt="Image 2"
+      />
+      <img
+        src="/images/WhatsApp Image 2024-05-05 at 21.07.15_5c0f893f.jpg"
+        alt="Image 1"
+      />
+      <img
+        src="/images/WhatsApp Image 2024-05-05 at 21.07.33_3ef2cef3.jpg"
+        alt="Image 3"
+      />
+    </div>
+
+    <%- include ('../partials/nav') %>
+
+    <div id="calendar" class="calendar"></div>
+
+    <div id="about-us-section">
+      <h2>About Us</h2>
+      <p>
+        Welcome to SJAK, where since 2014, we've been blending the best of three
+        cuisines from around the world. Our menu combines the vibrant spices of
+        Turkish cuisine, the comforting classics of Greece, and the bold flavors
+        of Lebanon. Come join us for an unforgettable dining experience where
+        every dish tells a story and every bite is a journey.
+      </p>
+    </div>
+
+    <div id="contact-us-section">
+      <h2>Contact Us</h2>
+      <p>For reservations, call us at: +1234567890</p>
+      <p>Follow us on social media:</p>
+      <ul>
+        <li>
+          <img src="/images/Facebook-Logo.png" class="facimg" />
+          <a href="facebook">Facebook</a>
+        </li>
+        <li>
+          <img
+            src="/images/pngtree-three-dimensional-instagram-icon-png-image_9015419.png"
+            class="instaimg"
+          />
+          <a href="Instagram">Instagram</a>
+        </li>
+        <li>
+          <img
+            src="/images/png-clipart-twitter-twitter-thumbnail.png"
+            class="instaimg"
+          />
+          <a href="Twitter">Twitter</a>
+        </li>
+      </ul>
+    </div>
+
+    <button class="book-button">
+      <span>BOOK YOUR TABLE</span>
+    </button>
+
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="/js/SJAK.js"></script>
+  </body>
+</html>

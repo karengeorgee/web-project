@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/bgrb.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Averia+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Welcome to the User Dashboard</title>
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        margin: 0;
+        height: 100vh;
+        padding: 0;
+        background-position: center;
+        background-attachment: fixed;
+        background-image: url("/images/WhatsApp Image 2024-05-08 at 3.53.25 PM.jpeg");
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+
+      .slideshow-container {
+        max-width: 1000px;
+        position: relative;
+        margin: auto;
+      }
+
+      .mySlides {
+        display: none;
+      }
+
+      .fade {
+        animation-name: fade;
+        animation-duration: 1.5s;
+      }
+
+      @keyframes fade {
+        from {
+          opacity: 0.4;
+        }
+
+        to {
+          opacity: 1;
+        }
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: bisque;
+        color: #340d0d;
+      }
+
+      th {
+        background-color: white;
+        color: orangered;
+        padding: 10px;
+        text-align: left;
+      }
+
+      td {
+        padding: 10px;
+      }
+
+      tr:nth-child(even) {
+        background-color: #f5f5f5;
+      }
+
+      .edit-button,
+      .delete-button {
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        font-size: 14px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      }
+
+      .edit-button {
+        background-color: white;
+        color: black;
+      }
+
+      .edit-button:hover {
+        background-color: #cc5200;
+        color: white;
+      }
+
+      .delete-button {
+        background-color: #f44336;
+      }
+
+      .delete-button:hover {
+        background-color: #d32f2f;
+      }
+
+      .edit-button:hover,
+      .delete-button:hover {
+        background-color: #45a049;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Welcome to the User Dashboard!</h1>
+    <header class="test">
+      <div id="logo">
+        <img src="/images/Untitled-1.png" alt="Logo" style="width: 100%" />
+      </div>
+    </header>
+    <div class="slideshow-container">
+      <div class="mySlides fade">
+        <img
+          src="/images/SachiHeliopolisInterior1-ezgif.com-webp-to-jpg-converter.jpg"
+          style="width: 100%"
+        />
+      </div>
+      <div class="mySlides fade">
+        <img
+          src="/images/IMG_1933-ezgif.com-webp-to-jpg-converter.jpg"
+          style="width: 100%"
+        />
+      </div>
+      <div class="mySlides fade">
+        <img
+          src="/images/62f845_c977822bfe59464a9fdfe3728d899609mv2-ezgif.com-webp-to-jpg-converter.jpg"
+          style="width: 100%"
+        />
+      </div>
+    </div>
+
+    <div class="white-background"></div>
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+
+    <div class="menu-items" id="menuItems">
+      <a href="/">Home</a>
+      <a href="#" onclick="currentreservations()">View Current Reservations</a>
+      <a href="/">Book your table</a>
+      <a href="#" onclick="reservationshistory()">Booking history</a>
+      <a href="/logout">Log out</a>
+    </div>
+
+    <div class="Container">
+      <div class="weldiv">
+        <!-- Assuming reservations are passed from the controller -->
+        <div
+          id="Viewcurrentreservtaions"
+          class="container"
+          style="display: none"
+        >
+          <h2>View current reservations</h2>
+          <table id="current">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>number of seats</th>
+                <th>Preferred seating</th>
+                <th>Date and time</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="currentTableBody">
+              <% reservations.forEach(reservation => { %> <% if
+              (reservation.status === 'Pending') { %>
+              <tr>
+                <td>
+                  <%= reservation.firstName %> <%= reservation.lastName %>
+                </td>
+                <td><%= reservation.NumberOfSeats %></td>
+                <td><%= reservation.seatingPlace %></td>
+                <td>
+                  <% if (reservation.createdAt) { %> <%=
+                  reservation.createdAt.toLocaleString('en-US', { timeZone:
+                  'UTC', hour12: false, year: 'numeric', month: '2-digit', day:
+                  '2-digit', hour: '2-digit', minute: '2-digit', second:
+                  '2-digit' }) %> <% } %>
+                </td>
+                <td id="status-<%= reservation.reservationNumber %>">
+                  <span class="pending">Pending</span>
+                </td>
+                <td>
+                  <button class="edit-button">Edit</button>
+                  <button class="delete-button">Delete</button>
+                </td>
+              </tr>
+              <% }}); %>
+            </tbody>
+          </table>
+        </div>
+
+        <div id="bookinghis" class="container" style="display: none">
+          <h2>Booking History</h2>
+          <table id="history">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>number of seats</th>
+                <th>Preferred seating</th>
+                <th>Date and time</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="currentTableBody">
+              <% reservations.forEach(reservation => { %> <% if
+              (reservation.status !== 'Pending') { %>
+              <tr>
+                <td>
+                  <%= reservation.firstName %> <%= reservation.lastName %>
+                </td>
+                <td><%= reservation.NumberOfSeats %></td>
+                <td><%= reservation.seatingPlace %></td>
+                <td>
+                  <% if (reservation.createdAt) { %> <%=
+                  reservation.createdAt.toLocaleString('en-US', { timeZone:
+                  'UTC', hour12: false, year: 'numeric', month: '2-digit', day:
+                  '2-digit', hour: '2-digit', minute: '2-digit', second:
+                  '2-digit' }) %> <% } %>
+                </td>
+                <td id="status-<%= reservation.reservationNumber %>">
+                  <span class="pending"><%= reservation.status %></span>
+                </td>
+              </tr>
+              <% }}); %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <script src="/js/userdash.js"></script>
+  </body>
+</html>

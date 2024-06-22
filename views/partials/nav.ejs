@@ -1,0 +1,23 @@
+<nav>
+  <div class="white-background"></div>
+  <div class="menu-toggle" onclick="toggleMenu()">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+  <div class="menu-items" id="menuItems">
+    <a href="/">Home</a>
+    <a href="/mapmenu">Menu</a>
+    <a href="/#about-us-section">About Us</a>
+    <a href="/#contact-us-section">Contact Us</a>
+    <a href="/signup">Sign up</a>
+    <a href="/signin">Login</a>
+  </div>
+</nav>
+
+<script>
+  function toggleMenu() {
+    var menuItems = document.getElementById("menuItems");
+    menuItems.classList.toggle("show");
+  }
+</script>
