@@ -1,37 +1,37 @@
-
-
-const express = require("express");
-const bodyParser = require("body-parser");
-const session = require("express-session");
-require("dotenv").config();
-const { connectToMongoDB } = require("./config/mongo.js");
-const { setupRoutes } = require("./routes/routes.js");
+import express from "express";
+import cookieParser from "cookie-parser";
+import secrets from "./config/secrets.js";
+import connectDB from "./config/db.js";
+//Routes
+import registrationRouter from "./route/registration.js";
+import reservationRouter from "./route/reservation.js";
+import adminRouter from "./route/admin.js";
+import homeRouter from "./route/home.js";
+import menuItemRouter from "./route/menuItem.js";
+import userRouter from "./route/user.js";
+//middleware
+import adminAuth from "./middleware/adminAuth.js";
 const app = express();
+const port = secrets.port;
 
-// Serve static files
-app.use(express.static("public", { maxAge: "7d" }));
+app.use(express.static("public")); // to read static files (css ,js ,img)
+app.use(express.json()); // to read req.body
+app.use(express.urlencoded({ extended: true })); // to read req.body
+app.use(cookieParser()); // to read req.cookie
+app.set("view engine", "ejs"); // to set view engine to ejs
 
-// Body parser middleware
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(homeRouter);
+app.use(registrationRouter);
+app.use("/menuItem", menuItemRouter);
+app.use("/user", userRouter);
+app.use("/reservation", reservationRouter);
+app.use("/admin", adminAuth, adminRouter);
 
-// Set view engine
-app.set("view engine", "ejs");
+app.use((req, res, next) => {
+  res.status(404).render("home/404");
+});
 
-// Connect to MongoDB
-connectToMongoDB();
-
-// Express session middleware
-app.use(
-  session({
-    secret: process.env.SESSION_SECRET,
-    resave: true,
-    saveUninitialized: true,
-  })
-);
-// Setup routes
-setupRoutes(app);
-
-const PORT = process.env.PORT;
-console.log(PORT)
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(port, () => {
+  connectDB();
+  console.log(`Example app listening on port ${port}`);
+});
