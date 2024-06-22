@@ -8,37 +8,6 @@
       href="https://fonts.googleapis.com/css2?family=Averia+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
-
-    <title>Welcome to the Admin Dashboard</title>
-  </head>
-  <body>
-    <h1>Welcome to the Admin Dashboard!</h1>
-
-    <header class="test">
-      <div id="logo">
-        <img src="/images/Untitled-1.png" alt="Logo" style="width: 100%" />
-      </div>
-    </header>
-    <div class="slideshow-container">
-      <div class="mySlides fade">
-        <img
-          src="/images/SachiHeliopolisInterior1-ezgif.com-webp-to-jpg-converter.jpg"
-          style="width: 100%"
-        />
-      </div>
-      <div class="mySlides fade">
-        <img
-          src="/images/IMG_1933-ezgif.com-webp-to-jpg-converter.jpg "
-          style="width: 100%"
-        />
-      </div>
-      <div class="mySlides fade">
-        <img
-          src="/images/62f845_c977822bfe59464a9fdfe3728d899609mv2-ezgif.com-webp-to-jpg-converter.jpg "
-          style="width: 100%"
-        />
-      </div>
-    </div>
     <style>
       body {
         font-family: "Poppins", sans-serif;
@@ -72,20 +41,53 @@
         }
       }
     </style>
+    <title>Welcome to the Admin Dashboard</title>
+  </head>
+  <body>
+    <h1>Welcome to the Admin Dashboard!</h1>
 
-    <div class="white-background"></div>
-    <div class="menu-toggle" onclick="toggleMenu()">
-      <div class="bar"></div>
-      <div class="bar"></div>
-      <div class="bar"></div>
+    <header class="test">
+      <div id="logo">
+        <img src="/images/Untitled-1.png" alt="Logo" style="width: 100%" />
+      </div>
+    </header>
+    <div class="slideshow-container">
+      <div class="mySlides fade">
+        <img
+          src="/images/SachiHeliopolisInterior1-ezgif.com-webp-to-jpg-converter.jpg"
+          style="width: 100%"
+        />
+      </div>
+      <div class="mySlides fade">
+        <img
+          src="/images/IMG_1933-ezgif.com-webp-to-jpg-converter.jpg "
+          style="width: 100%"
+        />
+      </div>
+      <div class="mySlides fade">
+        <img
+          src="/images/62f845_c977822bfe59464a9fdfe3728d899609mv2-ezgif.com-webp-to-jpg-converter.jpg "
+          style="width: 100%"
+        />
+      </div>
     </div>
 
-    <div class="menu-items" id="menuItems">
-      <a href="/">Home</a>
-      <a href="#" onclick="showManageUsers()">Manage Users</a>
-      <a href="#" onclick="showManageReservations()">Manage Reservations</a>
-      <a href="#" onclick="showManageItems()">Manage Items</a>
-    </div>
+    <nav>
+      <div class="white-background"></div>
+      <div class="menu-toggle" onclick="toggleMenu()">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+
+      <div class="menu-items" id="menuItems">
+        <a href="/">Home</a>
+        <a href="#" onclick="showTable('users')">Manage Users</a>
+        <a href="#" onclick="showTable('reservations')">Manage Reservations</a>
+        <a href="#" onclick="showTable('items')">Manage Items</a>
+        <a href="/logout">Log out</a>
+      </div>
+    </nav>
 
     <div id="manageUsersTable" class="container" style="display: none">
       <h2>Manage Users</h2>
@@ -98,7 +100,7 @@
           </tr>
         </thead>
         <tbody>
-          <% content.users.forEach(user => { %>
+          <% users.forEach(user => { %>
           <tr id="user-<%= user._id %>">
             <td><%= user.username %></td>
             <td><%= user.role %></td>
@@ -143,11 +145,11 @@
           </tr>
         </thead>
         <tbody>
-          <% content.reservations.forEach(reservation => { %>
+          <% reservations.forEach(reservation => { %>
           <tr id="reservation-<%= reservation._id %>">
             <td><%= reservation.firstName %> <%= reservation.lastName %></td>
-            <td><%= reservation.seatNumber %></td>
-            <td><%= reservation.preferredSeating %></td>
+            <td><%= reservation.NumberOfSeats %></td>
+            <td><%= reservation.seatingPlace %></td>
             <td>
               <div class="dropdown">
                 <a
@@ -190,13 +192,13 @@
           </tr>
         </thead>
         <tbody>
-          <% content.items.forEach(item => { %>
+          <% menuItems.forEach(item => { %>
           <tr id="item-<%= item._id %>">
-            <td><%= item.itemName %></td>
+            <td><%= item.name %></td>
             <td><%= item.description %></td>
             <td><%= item.price %></td>
             <td><%= item.category %></td>
-            <td><%= item.availability %></td>
+            <td><%= item.isAvailable %></td>
             <td>
               <div class="dropdown">
                 <a
@@ -226,7 +228,6 @@
       </table>
     </div>
 
-    <script src="/js/bgrb.js"></script>
     <script src="/js/admin.js"></script>
     <script type="module">
       document.addEventListener("DOMContentLoaded", () => {
@@ -234,7 +235,7 @@
           button.addEventListener("click", async (event) => {
             const userId = event.target.getAttribute("data-id");
 
-            const response = await fetch(`/bgrb/${userId}`, {
+            const response = await fetch(`/user/${userId}`, {
               method: "DELETE",
             });
 
@@ -254,7 +255,7 @@
           button.addEventListener("click", async (event) => {
             const userId = event.target.getAttribute("data-id");
 
-            const response = await fetch(`/bgrb/reservation/${userId}`, {
+            const response = await fetch(`/reservation/${userId}`, {
               method: "DELETE",
             });
 
@@ -274,7 +275,7 @@
           button.addEventListener("click", async (event) => {
             const itemId = event.target.getAttribute("data-id");
 
-            const response = await fetch(`/item/${itemId}`, {
+            const response = await fetch(`/menuItem/${itemId}`, {
               method: "DELETE",
             });
 
@@ -282,14 +283,17 @@
               document.getElementById(`item-${itemId}`).remove();
               alert("item deleted successfully");
             } else {
-              alert("item to delete reservation");
+              alert("Failed to delete item");
             }
           });
         });
       });
     </script>
-
-
-
+    <script>
+      function toggleMenu() {
+        var menuItems = document.getElementById("menuItems");
+        menuItems.classList.toggle("show");
+      }
+    </script>
   </body>
 </html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Signup</title>
+    <link rel="stylesheet" href="/css/signup.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Averia+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/toastify-js"
+    ></script>
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        margin: 0;
+        height: 100vh;
+        padding: 0;
+        background-position: center;
+        background-attachment: fixed;
+        background-image: url("/images/f3847d_da686092542e48e5a962f3b1e69456d5mv2-ezgif.com-webp-to-jpg-converter.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+
+      #logo img {
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <%- include ('../partials/nav') %>
+    <div id="logo">
+      <img src="/images/Untitled-1.png" alt="Logo" />
+    </div>
+    <main>
+      <section id="signup-section" class="container">
+        <h2>Sign Up</h2>
+        <form id="signupForm">
+          <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              class="form-control"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              class="form-control"
+            />
+            <span id="showPassword"><i class="bi bi-eye"></i></span>
+          </div>
+          <div class="mb-3">
+            <label for="confirmPassword" class="form-label"
+              >Confirm Password</label
+            >
+            <input
+              type="password"
+              id="confirmPassword"
+              name="confirmPassword"
+              class="form-control"
+            />
+          </div>
+          <button type="submit" class="btn btn-primary">Sign Up</button>
+        </form>
+      </section>
+      <div id="about-us-section">
+        <h2>About Us</h2>
+        <p>
+          Welcome to SJ, where since 2014, we've been blending the best of three
+          cuisines from around the world. Our menu combines the vibrant spices
+          of Turkish cuisine, the comforting classics of Greece, and the bold
+          flavors of Lebanon. Come join us for an unforgettable dining
+          experience where every dish tells a story and every bite is a journey.
+        </p>
+      </div>
+
+      <div id="contact-us-section">
+        <h2>Contact Us</h2>
+        <p>For reservations, call us at: +1234567890</p>
+        <p>Follow us on social media:</p>
+        <ul>
+          <li>
+            <img src="/images/Facebook-Logo.png" class="facimg" /><a
+              href="facebook"
+              >Facebook</a
+            >
+          </li>
+          <li>
+            <img
+              src="/images/pngtree-three-dimensional-instagram-icon-png-image_9015419.png"
+              class="instaimg"
+            /><a href="Instagram">Instagram</a>
+          </li>
+          <li>
+            <img
+              src="/images/png-clipart-twitter-twitter-thumbnail.png"
+              class="instaimg"
+            /><a href="Twitter">Twitter</a>
+          </li>
+        </ul>
+      </div>
+    </main>
+
+    <script type="module">
+      import showMsg from "/js/toastify.js";
+
+      document
+        .getElementById("signupForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          const username = document.getElementById("username").value.trim();
+          const password = document.getElementById("password").value.trim();
+          const confirmPassword = document
+            .getElementById("confirmPassword")
+            .value.trim();
+
+          if (!username || !password || !confirmPassword) {
+            return showMsg("Please fill all the fields", "red");
+          }
+
+          if (password !== confirmPassword) {
+            return showMsg("Passwords should match", "red");
+          }
+
+          const jsonString = JSON.stringify({ username, password });
+
+          fetch("/signup", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: jsonString,
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              if (data.errMsg) return showMsg(data.errMsg, "red");
+              else showMsg("Account created successfully", "green");
+
+              location.assign("/signin");
+            })
+            .catch((error) => {
+              showMsg("Error: " + error, "red");
+            });
+        });
+    </script>
+  </body>
+</html>
