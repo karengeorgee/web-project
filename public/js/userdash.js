@@ -6,6 +6,7 @@ function toggleMenu() {
 }
 
 function currentreservations() {
+    
     var Viewcurrentreservations = document.getElementById("Viewcurrentreservtaions");
     var currentTableBody = document.getElementById("currentTableBody");
     Viewcurrentreservations.style.display = "block";

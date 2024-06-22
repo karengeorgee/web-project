@@ -133,33 +133,22 @@
     <thead>
       <tr>
         <th>Name</th>
-        <th>reservation number</th>
         <th>number of seats</th>
         <th>Preferred seating</th> 
-        <th>Date</th>
-        <th>Time</th>
+        <th>Date & Time</th>
+        
         <th>Status</th>
         <th>Actions</th>
       </tr>
     </thead>
     <tbody id="currentTableBody">
-      <% reservations.forEach(reservation => { %>
+      <% reservations.filter(reservation => reservation.status === 'Pending').forEach(reservation => { %>
         <tr>
           <td><%= reservation.firstName %> <%= reservation.lastName %></td>
-          <td><%= reservation.reservationNumber %></td>
           <td><%= reservation.seatNumber %></td>
           <td><%= reservation.preferredSeating %></td>
-          <td><%= reservation.Date %></td>
-          <td><%= reservation.Time %></td>
-          <td id="status-<%= reservation.reservationNumber %>">
-            <% if (reservation.status === 'Pending') { %>
-              <span class="pending">Pending</span>
-            <% } else if (reservation.status === 'Confirmed') { %>
-              <span class="confirmed">Confirmed</span>
-            <% } else if (reservation.status === 'Cancelled') { %>
-              <span class="cancelled">Cancelled</span>
-            <% } %>
-          </td>
+          <td><%= reservation.reservationDate %></td>
+          <td><%= reservation.status %></td>
           <td>
             <button class="edit-button">Edit</button>
             <button class="delete-button">Delete</button>
@@ -175,22 +164,36 @@
       <table id="history">
         <thead>
           <tr>
-            <th>Reservation Number</th>
+            
             <th>Name</th>
-            <th>Preferred Seating</th>
             <th>Number of Seats</th>
+            <th>Preferred Seating</th>
+            <th>Date & Time</th>
+            
+           <th>Status</th>
+            <th>Actions</th>
           </tr>
         </thead>
           <tbody id="bookinghistable">
-            <% reservations.forEach(reservation => { %>
+            <% reservations.filter(reservation => reservation.status === 'Done').forEach(reservation => { %>
               <tr>
-                <td><%= reservation.reservationNumber %></td>
+              
                 <td><%= reservation.firstName %> <%= reservation.lastName %></td>
-                <td><%= reservation.preferredSeating %></td>
                 <td><%= reservation.seatNumber %></td>
-                <td>
+                <td><%= reservation.preferredSeating %></td>
+                <td><%= reservation.reservationDate %></td>
+                <td><%= reservation.status %></td>
+                
+                
+                
                   <!-- Actions for editing or deleting reservations -->
+                
+                <td>
+                  <button class="edit-button">Edit</button>
+                  <button class="delete-button">Delete</button>
+                
                 </td>
+            
               </tr>
             <% }); %>
           </tbody>
