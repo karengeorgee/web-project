@@ -35,20 +35,17 @@ body {
 
 label {
   color: whitesmoke;
-  font-family: 'Averia Libre', sans-serif;
-
+  font-family: "Averia Libre", sans-serif;
 }
 
 h1 {
   color: whitesmoke;
-  font-family: 'Averia Libre', sans-serif;
-
+  font-family: "Averia Libre", sans-serif;
 }
 
 h2.mb-3 {
   color: white;
-  font-family: 'Averia Libre', sans-serif;
-
+  font-family: "Averia Libre", sans-serif;
 }
 
 .textfield,
@@ -69,8 +66,7 @@ input[type="submit"] {
 .select p {
   font-size: 16px;
   margin-bottom: 5px;
-  font-family: 'Averia Libre', sans-serif;
-
+  font-family: "Averia Libre", sans-serif;
 }
 
 input[type="submit"],
@@ -141,8 +137,7 @@ button[type="submit"]:hover {
 
 p {
   color: whitesmoke;
-  font-family: 'Averia Libre', sans-serif;
-
+  font-family: "Averia Libre", sans-serif;
 }
 
 #logo {
@@ -189,7 +184,7 @@ p {
   display: none;
   z-index: 1001;
   animation: fadeIn 0.5s ease forwards;
-  font-family: 'Averia Libre', sans-serif;
+  font-family: "Averia Libre", sans-serif;
 }
 
 .menu-items.show {
@@ -249,8 +244,8 @@ p {
 #contact-us-section h2 {
   font-size: 24px;
   margin-bottom: 20px;
-  color: #D4AF37;
-  font-family: 'Averia Libre', sans-serif;
+  color: #d4af37;
+  font-family: "Averia Libre", sans-serif;
 }
 
 #about-us-section p,
@@ -258,7 +253,7 @@ p {
   font-size: 16px;
   line-height: 1.6;
   color: whitesmoke;
-  font-family: 'Averia Libre', sans-serif;
+  font-family: "Averia Libre", sans-serif;
 }
 
 #contact-us-section ul {
